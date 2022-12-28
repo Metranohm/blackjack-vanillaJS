@@ -208,10 +208,10 @@ const deck = [
     "value": "A"
   }
 ]
+let playerHand = [];  // The player's hand
+let dealerHand = [];  // The dealer's hand
 
-const shuffledDeck = shuffleDeck(deck);
-
-
+// Define the shuffleDeck function
 function shuffleDeck(deck) {
   for (let i = 0; i < deck.length; i++) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -219,3 +219,24 @@ function shuffleDeck(deck) {
   }
   return deck;
 }
+
+// Shuffle the deck of cards
+deck = shuffleDeck(deck);
+
+// Define the dealCard function
+function dealCard(hand, deck) {
+  hand.push(deck.shift());
+}
+
+// Deal the initial cards to the player and dealer
+dealCard(playerHand, deck);
+dealCard(dealerHand, deck);
+dealCard(playerHand, deck);
+dealCard(dealerHand, deck);
+
+// Display the cards on the page
+const playerHandHTML = playerHand.map(card => `<div class="card">${card}</div>`).join('');
+document.getElementById('player-hand').innerHTML = playerHandHTML;
+
+const dealerHandHTML = dealerHand.map(card => `<div class="card">${card}</div>`).join('');
+document.getElementById('dealer-hand').innerHTML = dealerHandHTML;

@@ -213,6 +213,7 @@ let dealerHand = [];  // The dealer's hand
 let playerScore = 0;  // The player's score
 let dealerScore = 0;  // The dealer's score
 
+deck = shuffleDeck(deck);
 // Define the shuffleDeck function
 function shuffleDeck(deck) {
   for (let i = 0; i < deck.length; i++) {
@@ -223,7 +224,12 @@ function shuffleDeck(deck) {
 }
 
 // Shuffle the deck of cards
-deck = shuffleDeck(deck);
+
+const startButton = document.getElementById("start-button");
+
+startButton.addEventListener("click", function() {
+  shuffle(deck);
+});
 
 // Define the dealCard function
 function dealCard(hand, deck) {
